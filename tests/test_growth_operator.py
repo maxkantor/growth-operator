@@ -1,5 +1,6 @@
 import importlib.util
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "src" / "growth_operator.py"
@@ -21,6 +22,16 @@ class GrowthOperatorTests(unittest.TestCase):
     def test_focus_site_gets_offer_experiment(self):
         action = growth_operator.choose_action({"decision": "focus"}, 200, [], 20)
         self.assertIn("offer experiment", action)
+
+    def test_select_experiments_rotates_one_per_product(self):
+        playbooks = {
+            "Site A": [{"id": "a1"}, {"id": "a2"}],
+            "Site B": [{"id": "b1"}],
+        }
+        selected = growth_operator.select_experiments(
+            playbooks, datetime(2026, 1, 2, tzinfo=timezone.utc)
+        )
+        self.assertEqual([item["id"] for item in selected], ["a2", "b1"])
 
 
 if __name__ == "__main__":
