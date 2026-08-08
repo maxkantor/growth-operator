@@ -1,0 +1,11 @@
+[
+  {"name":"AIWorkoutNow","url":"https://aiworkoutnow.com","repo":"maxkantor/AIWorkoutNow","decision":"focus"},
+  {"name":"GetTrainMate","url":"https://gettrainmate.com","repo":"maxkantor/GetTrainMate","decision":"validate"},
+  {"name":"DoctorAIBolit","url":"https://doctoraibolit.com","repo":"maxkantor/doctor-ai-bolit","decision":"maintain"},
+  {"name":"LoveBehaviorTranslator","url":"https://lovebehaviortranslator.com","repo":"maxkantor/love-behavior-translator","decision":"validate"},
+  {"name":"AnxietyChatAI","url":"https://anxietychatai.com","repo":"maxkantor/anxiety-chat-ai","decision":"maintain"},
+  {"name":"LuckyNumbersLab","url":"https://luckynumberslab.com","repo":"maxkantor/lucky-numbers-lab","decision":"focus"},
+  {"name":"HybridRace Workouts","url":"https://www.hybridraceworkouts.com","repo":"maxkantor/GoHyrox","decision":"focus"},
+  {"name":"JobCompassAI","url":"https://jobcompassai.com","repo":"maxkantor/JobCompassAI","decision":"validate"},
+  {"name":"YouTubeBoosterAI","url":"https://youtubeboosterai.com","repo":"maxkantor/YouTubeBooster","decision":"validate"}
+]
