@@ -34,14 +34,42 @@ jobs:
 
       - name: Commit latest report
         run: |
-          if git diff --quiet -- reports/latest.md; then
+          if git diff --quiet -- reports/latest.md reports/today.json; then
             exit 0
           fi
           git config user.name "growth-operator[bot]"
           git config user.email "growth-operator[bot]@users.noreply.github.com"
-          git add reports/latest.md
+          git add reports/latest.md reports/today.json
           git commit -m "Update daily growth report"
           git push
+
+      - name: Create daily growth action issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          action_date=$(python -c "import json; print(json.load(open('reports/today.json'))['date'])")
+          title="Growth actions ${action_date}"
+          existing=$(gh issue list --state all --search "${title} in:title" --json number --jq 'length')
+          if [ "$existing" != "0" ]; then
+            exit 0
+          fi
+          python - <<'PY'
+          import json
+          data = json.load(open('reports/today.json'))
+          lines = [f"# Growth actions for {data['date']}", ""]
+          for item in data['experiments']:
+              lines.extend([
+                  f"## {item['product']} — {item['id']}", "",
+                  f"**Action:** {item['action']}", "",
+                  f"**Metric:** {item['metric']}",
+                  f"**Target:** {item['target']}",
+                  f"**Guardrail:** {item['guardrail']}",
+                  f"**Duration:** {item['duration']}",
+                  f"**Stop rule:** {item['stop_rule']}", "",
+              ])
+          open('/tmp/growth-action.md', 'w').write('\n'.join(lines))
+          PY
+          gh issue create --title "$title" --body-file /tmp/growth-action.md
 
       - name: Open availability issue
         if: steps.audit.outcome == 'failure'
