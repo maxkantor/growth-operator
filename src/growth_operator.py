@@ -13,7 +13,9 @@ from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config" / "sites.json"
+PLAYBOOKS = ROOT / "config" / "playbooks.json"
 REPORT = ROOT / "reports" / "latest.md"
+TODAY_ACTION = ROOT / "reports" / "today.json"
 USER_AGENT = "MaxKantorGrowthOperator/1.0 (+https://github.com/maxkantor/growth-operator)"
 
 
@@ -88,13 +90,23 @@ def choose_action(site, status, missing, sitemap_urls):
     return "Maintain reliability and collect conversion evidence; do not increase acquisition spend yet."
 
 
-def render(results):
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+def select_experiments(playbooks, now):
+    selected = []
+    day_index = now.timetuple().tm_yday
+    for product, experiments in playbooks.items():
+        if not experiments:
+            continue
+        selected.append({"product": product, **experiments[(day_index - 1) % len(experiments)]})
+    return selected
+
+
+def render(results, experiments, now):
+    generated_at = now.strftime("%Y-%m-%d %H:%M UTC")
     ordered = sorted(results, key=lambda item: (item["status"] == 0, -item["score"], item["name"]))
     lines = [
         "# Daily Growth Report",
         "",
-        f"Generated: {now}",
+        f"Generated: {generated_at}",
         "",
         "> Public-site evidence only. Revenue, signup, activation, and checkout conclusions require connected analytics.",
         "",
@@ -112,6 +124,22 @@ def render(results):
     lines += ["", "## Highest-priority acquisition queue", ""]
     for index, item in enumerate(focus[:3], 1):
         lines.append(f'{index}. **{item["name"]}:** {item["action"]}')
+    lines += ["", "## Today's measurable experiments", ""]
+    for experiment in experiments:
+        lines += [
+            f'### {experiment["product"]} — {experiment["id"]}',
+            "",
+            f'- **Funnel:** {experiment["funnel_stage"]}',
+            f'- **Hypothesis:** {experiment["hypothesis"]}',
+            f'- **Action:** {experiment["action"]}',
+            f'- **Primary metric:** {experiment["metric"]}',
+            f'- **Success target:** {experiment["target"]}',
+            f'- **Guardrail:** {experiment["guardrail"]}',
+            f'- **Duration:** {experiment["duration"]}',
+            f'- **Cash cost:** {experiment["cost"]}',
+            f'- **Stop rule:** {experiment["stop_rule"]}',
+            "",
+        ]
     lines += ["", "## Failures and missing fundamentals", ""]
     failures = [item for item in ordered if item["status"] == 0 or item["missing"]]
     if not failures:
@@ -132,13 +160,20 @@ def render(results):
 
 def main():
     sites = json.loads(CONFIG.read_text(encoding="utf-8"))
+    playbooks = json.loads(PLAYBOOKS.read_text(encoding="utf-8"))
+    now = datetime.now(timezone.utc)
+    experiments = select_experiments(playbooks, now)
     results = []
     with ThreadPoolExecutor(max_workers=min(6, len(sites))) as executor:
         futures = {executor.submit(analyze, site): site for site in sites}
         for future in as_completed(futures):
             results.append(future.result())
     REPORT.parent.mkdir(parents=True, exist_ok=True)
-    REPORT.write_text(render(results), encoding="utf-8")
+    REPORT.write_text(render(results, experiments, now), encoding="utf-8")
+    TODAY_ACTION.write_text(json.dumps({
+        "date": now.strftime("%Y-%m-%d"),
+        "experiments": experiments,
+    }, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {REPORT}")
     if any(item["status"] == 0 or item["status"] >= 500 for item in results):
         print("One or more production sites are unavailable.", file=sys.stderr)
