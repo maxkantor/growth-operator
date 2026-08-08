@@ -1,6 +1,6 @@
 # Daily Growth Report
 
-Generated: 2026-08-08 02:25 UTC
+Generated: 2026-08-08 12:40 UTC
 
 > Public-site evidence only. Revenue, signup, activation, and checkout conclusions require connected analytics.
 
@@ -8,20 +8,21 @@ Generated: 2026-08-08 02:25 UTC
 
 | Product | HTTP | SEO health | Sitemap URLs | Current decision | Today's action |
 | --- | ---: | ---: | ---: | --- | --- |
+| [AIWorkoutNow](https://aiworkoutnow.com) | 200 | 86/100 | 42 | focus | Improve the primary landing-page CTA and run one tracked offer experiment for qualified visitors. |
 | [DoctorAIBolit](https://doctoraibolit.com) | 200 | 86/100 | 49 | maintain | Maintain reliability and collect conversion evidence; do not increase acquisition spend yet. |
+| [GetTrainMate](https://gettrainmate.com) | 200 | 86/100 | 61 | validate | Test one narrow customer segment with a specific outcome-focused landing page before adding features. |
 | [HybridRace Workouts](https://www.hybridraceworkouts.com) | 200 | 86/100 | 21 | focus | Improve the primary landing-page CTA and run one tracked offer experiment for qualified visitors. |
-| [GetTrainMate](https://gettrainmate.com) | 200 | 71/100 | 61 | validate | Test one narrow customer segment with a specific outcome-focused landing page before adding features. |
-| [LuckyNumbersLab](https://luckynumberslab.com) | 200 | 71/100 | 0 | focus | Publish one high-intent landing page answering a specific customer problem and add it to the sitemap. |
+| [JobCompassAI](https://jobcompassai.com) | 200 | 86/100 | 96 | validate | Test one narrow customer segment with a specific outcome-focused landing page before adding features. |
+| [LuckyNumbersLab](https://luckynumberslab.com) | 200 | 86/100 | 234 | focus | Improve the primary landing-page CTA and run one tracked offer experiment for qualified visitors. |
 | [YouTubeBoosterAI](https://youtubeboosterai.com) | 200 | 57/100 | 37 | validate | Fix homepage search metadata and canonical URL; verify the change in Search Console. |
 | [AnxietyChatAI](https://anxietychatai.com) | 200 | 43/100 | 0 | maintain | Fix homepage search metadata and canonical URL; verify the change in Search Console. |
-| [AIWorkoutNow](https://aiworkoutnow.com) | DOWN | 29/100 | 42 | focus | Restore production availability before sending traffic. |
-| [JobCompassAI](https://jobcompassai.com) | DOWN | 29/100 | 96 | validate | Restore production availability before sending traffic. |
-| [LoveBehaviorTranslator](https://lovebehaviortranslator.com) | DOWN | 0/100 | 0 | validate | Restore production availability before sending traffic. |
+| [LoveBehaviorTranslator](https://lovebehaviortranslator.com) | 200 | 29/100 | 0 | validate | Fix homepage search metadata and canonical URL; verify the change in Search Console. |
 
 ## Highest-priority acquisition queue
 
-1. **HybridRace Workouts:** Improve the primary landing-page CTA and run one tracked offer experiment for qualified visitors.
-2. **LuckyNumbersLab:** Publish one high-intent landing page answering a specific customer problem and add it to the sitemap.
+1. **AIWorkoutNow:** Improve the primary landing-page CTA and run one tracked offer experiment for qualified visitors.
+2. **HybridRace Workouts:** Improve the primary landing-page CTA and run one tracked offer experiment for qualified visitors.
+3. **LuckyNumbersLab:** Improve the primary landing-page CTA and run one tracked offer experiment for qualified visitors.
 
 ## Today's measurable experiments
 
@@ -64,15 +65,15 @@ Generated: 2026-08-08 02:25 UTC
 
 ## Failures and missing fundamentals
 
+- **AIWorkoutNow:** h1
 - **DoctorAIBolit:** h1
+- **GetTrainMate:** h1
 - **HybridRace Workouts:** h1
-- **GetTrainMate:** h1, robots
-- **LuckyNumbersLab:** h1, sitemap
+- **JobCompassAI:** h1
+- **LuckyNumbersLab:** h1
 - **YouTubeBoosterAI:** title, description, canonical
 - **AnxietyChatAI:** title, h1, robots, sitemap
-- **AIWorkoutNow:** healthy, title, description, canonical, h1
-- **JobCompassAI:** healthy, title, description, canonical, h1
-- **LoveBehaviorTranslator:** healthy, title, description, canonical, h1, robots, sitemap
+- **LoveBehaviorTranslator:** title, description, h1, robots, sitemap
 
 ## Metrics required for revenue decisions
 
