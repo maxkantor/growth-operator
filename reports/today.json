@@ -1,44 +1,47 @@
 {
   "date": "2026-08-09",
-  "experiments": [
+  "delivery": {
+    "product": "HybridRace Workouts",
+    "experiment_id": "hybrid-guide-cta",
+    "status": "draft_pr_blocked",
+    "branch": "agent/growth-hybridrace-hybrid-guide-cta",
+    "commit": "d9036b14eebda8ede88e78a6ac278fae05d9778a",
+    "pull_request": "https://github.com/maxkantor/GoHyrox/pull/1",
+    "merged": false,
+    "deployment_status": "not_deployed",
+    "production_url": "https://www.hybridraceworkouts.com/guides/hyrox-training-plan",
+    "production_health_before_deployment": {
+      "homepage_http": 200,
+      "changed_route_http": 200
+    },
+    "baseline": "unavailable; GA4 read-only data is not connected",
+    "primary_metric": "guide_generate_click / guide_view",
+    "target": ">= 5% after 200 guide sessions",
+    "guardrail": "Guide engagement time must not fall by more than 10%",
+    "next_evaluation_date": "2026-08-23",
+    "rollback": "Revert GoHyrox PR #1",
+    "blocker": "No repository status checks or PR workflow runs; full authenticated checkout unavailable, so full-repository test/lint/build release gate is unverified.",
+    "validation": [
+      "focused component test passed",
+      "ESLint passed in dependency-matched harness",
+      "optimized component production build passed"
+    ]
+  },
+  "queued_experiments": [
     {
       "product": "HybridRace Workouts",
       "id": "hybrid-paywall-offer",
-      "funnel_stage": "Paywall to purchase",
-      "hypothesis": "A concrete recommended plan will reduce choice friction after free workouts are consumed.",
-      "action": "At the workout limit, lead with the Athlete offer: \u2018Keep training: 50 race-paced workouts for $5.99 once.\u2019 Keep Unlimited $9.99 as the secondary comparison and show \u2018No subscription\u2019 beside both CTAs.",
-      "metric": "checkout_start / unlock_wall_view",
-      "target": ">= 8% and verified purchase rate >= 2%",
-      "guardrail": "Refund/contact complaints must not increase",
-      "duration": "14 days or 300 paywall views",
-      "cost": "$0",
-      "stop_rule": "Revert if checkout-start rate is below the existing baseline after 300 views"
+      "status": "queued_boundary_review"
     },
     {
       "product": "AIWorkoutNow",
       "id": "workout-result-upgrade",
-      "funnel_stage": "Activation to pricing",
-      "hypothesis": "Users who receive a useful first workout are more receptive to a paid plan than cold homepage visitors.",
-      "action": "Below the first generated workout, add: \u2018Want your next week planned too?\u2019 Show one recommended paid option, its exact one-time price, and a \u2018See Plans\u2019 CTA. Track generated_result_upgrade_click with workout type and source.",
-      "metric": "generated_result_upgrade_click / workout_generated_success",
-      "target": ">= 6% after 200 successful workouts",
-      "guardrail": "Workout save/print usage must not decrease",
-      "duration": "14 days",
-      "cost": "$0",
-      "stop_rule": "Remove if CTR is below 2% after 200 generated workouts"
+      "status": "queued"
     },
     {
       "product": "LuckyNumbersLab",
       "id": "lottery-upgrade-value",
-      "funnel_stage": "Free use to checkout",
-      "hypothesis": "Users will pay when credits are framed around saved analysis and convenience, not better odds.",
-      "action": "At the free-credit limit, test: \u2018Continue your analysis and save your number history.\u2019 Show Starter $3.99 and Popular $9.99, clearly labeled one-time. Do not imply that payment improves winning probability.",
-      "metric": "checkout_started / credit_limit_view and checkout_completed / checkout_started",
-      "target": "Checkout start >= 7%; completion >= 35%",
-      "guardrail": "No increase in gambling-responsibility complaints or misleading-claim feedback",
-      "duration": "14 days or 300 limit views",
-      "cost": "$0",
-      "stop_rule": "Revert if verified purchase conversion declines after 300 views"
+      "status": "queued_boundary_review"
     }
   ]
 }
