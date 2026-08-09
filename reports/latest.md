@@ -4,6 +4,22 @@ Generated: 2026-08-09 12:42 UTC
 
 > Public-site evidence only. Revenue, signup, activation, and checkout conclusions require connected analytics.
 
+## Incremental delivery — 2026-08-09
+
+- **Product / experiment:** HybridRace Workouts — `hybrid-guide-cta`
+- **Status:** implemented in a draft PR; not merged or deployed
+- **Branch:** `agent/growth-hybridrace-hybrid-guide-cta`
+- **Commit:** `d9036b14eebda8ede88e78a6ac278fae05d9778a`
+- **PR:** [GoHyrox #1](https://github.com/maxkantor/GoHyrox/pull/1)
+- **Production URL:** https://www.hybridraceworkouts.com/guides/hyrox-training-plan
+- **Current production health:** homepage 200; sample guide 200 before deployment
+- **Baseline:** unavailable; GA4 read-only data is not connected
+- **Primary metric / target:** `guide_generate_click / guide_view` ≥ 5% after 200 guide sessions
+- **Guardrail:** guide engagement time must not fall by more than 10%
+- **Next evaluation date:** 2026-08-23, only after deployment and sufficient traffic
+- **Rollback:** revert GoHyrox PR #1
+- **Blocker:** GitHub reports no repository checks or PR workflow runs, and a full authenticated checkout was unavailable. Focused test, lint, and component production build passed, but the release gate requires full-repository validation. The PR remains draft.
+
 ## Portfolio scorecard
 
 | Product | HTTP | SEO health | Sitemap URLs | Current decision | Today's action |
