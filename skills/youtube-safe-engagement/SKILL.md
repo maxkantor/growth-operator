@@ -74,3 +74,9 @@ Rank recommendations in this order:
 ## Response format
 
 Lead with the safest best approach. Then provide the exact ready-to-post text and a concise rollout checklist. Separate policy facts from recommendations and attach official citations near policy claims. If the user asks to automate this workflow, automate drafting, analytics checks, reminders, or reporting only; never automate likes, comments, views, subscriptions, or account switching.
+
+## Run the repository automation
+
+For the Growth Operator repository, use `src/youtube_operator.py` with `config/youtube.json`. Read public uploads, statistics, and genuine top-level comments through the YouTube Data API using the `YOUTUBE_API_KEY` secret. Write bilingual drafts and recommendations to `reports/youtube-latest.md`, and retain only video/comment identifiers plus public statistics in `reports/youtube-state.json`.
+
+Keep this integration read-only. Never add OAuth write scopes or API calls that insert ratings, comments, replies, subscriptions, or artificial views. Treat generated replies as drafts for creator review. State clearly that public API statistics do not expose impressions, CTR, audience retention, or eligible public watch hours.
