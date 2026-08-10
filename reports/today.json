@@ -1,29 +1,44 @@
 {
   "date": "2026-08-10",
-  "delivery": {
-    "product": "HybridRace Workouts",
-    "experiment_id": "hybrid-guide-cta",
-    "status": "draft_pr_blocked_rechecked",
-    "branch": "agent/growth-hybridrace-hybrid-guide-cta",
-    "commit": "d9036b14eebda8ede88e78a6ac278fae05d9778a",
-    "pull_request": "https://github.com/maxkantor/GoHyrox/pull/1",
-    "merged": false,
-    "mergeable": true,
-    "deployment_status": "not_deployed",
-    "production_url": "https://www.hybridraceworkouts.com/guides/hyrox-training-plan",
-    "production_health": {
-      "homepage_http": 200,
-      "changed_route_http": 200,
-      "bundle": "main.f1ec1f2f.js",
-      "cta_present": false
+  "experiments": [
+    {
+      "product": "HybridRace Workouts",
+      "id": "hybrid-gym-partners",
+      "funnel_stage": "Partner distribution",
+      "hypothesis": "Hybrid gyms will share a co-branded free workout generator with members before races.",
+      "action": "Create one co-brandable /gym-partner landing-page template with a gym-name parameter, 3 free workouts, and a 20% tracked referral code. Build a qualified list of 25 independent hybrid/CrossFit gyms with public business contact pages; do not send bulk unsolicited messages.",
+      "metric": "partner landing activations and purchases",
+      "target": "5 partner conversations, 2 active partners, 1 verified purchase",
+      "guardrail": "No scraped personal emails or automated bulk outreach",
+      "duration": "21 days",
+      "cost": "$0 before validation",
+      "stop_rule": "Pause if 25 qualified contacts produce no replies or activations"
     },
-    "baseline": "unavailable; GA4 read-only data is not connected",
-    "primary_metric": "guide_generate_click / guide_view",
-    "target": ">= 5% after 200 guide sessions",
-    "guardrail": "Guide engagement time must not fall by more than 10%",
-    "next_evaluation_date": "2026-08-24",
-    "rollback": "Revert GoHyrox PR #1",
-    "blocker": "Zero GitHub status checks and zero PR workflow runs; full-repository test/lint/build gate remains unverified.",
-    "action": "Resumed unfinished experiment; did not start or duplicate another experiment."
-  }
+    {
+      "product": "AIWorkoutNow",
+      "id": "workout-seo-activation",
+      "funnel_stage": "SEO landing page to activation",
+      "hypothesis": "Intent-matched examples and preselected generator settings will convert SEO visitors better than a generic CTA.",
+      "action": "On the five highest-intent landing pages, add a sample workout plus \u2018Customize this workout\u2019 that opens the generator with goal, equipment, and duration preselected. Start with home, dumbbell, strength, weight-loss, and beginner pages.",
+      "metric": "seo_customize_click / seo_landing_view and workout_generated_success",
+      "target": "CTA CTR >= 5% and completion >= 60%",
+      "guardrail": "No indexability, canonical, or page-speed regression",
+      "duration": "21 days",
+      "cost": "$0",
+      "stop_rule": "Stop expanding if the first five pages produce fewer than 20 activations"
+    },
+    {
+      "product": "LuckyNumbersLab",
+      "id": "lottery-return-loop",
+      "funnel_stage": "Retention",
+      "hypothesis": "A draw-specific saved-history reminder will increase return visits and eventually paid credit use.",
+      "action": "Offer an opt-in weekly draw-insights email after a user saves numbers. Include saved-history access, new draw statistics, responsible-gaming language, and one product CTA. Require explicit consent and one-click unsubscribe.",
+      "metric": "opt_in_rate, email_return_visit, and purchase_completed",
+      "target": "Opt-in >= 8%; email return rate >= 10%; at least 1 verified purchase",
+      "guardrail": "Complaint rate < 0.1%; unsubscribe honored immediately",
+      "duration": "30 days",
+      "cost": "Existing SES cost only",
+      "stop_rule": "Pause if complaints exceed 0.1% or no return visits occur after 200 deliveries"
+    }
+  ]
 }
