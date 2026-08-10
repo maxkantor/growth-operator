@@ -1,47 +1,29 @@
 {
-  "date": "2026-08-09",
+  "date": "2026-08-10",
   "delivery": {
     "product": "HybridRace Workouts",
     "experiment_id": "hybrid-guide-cta",
-    "status": "draft_pr_blocked",
+    "status": "draft_pr_blocked_rechecked",
     "branch": "agent/growth-hybridrace-hybrid-guide-cta",
     "commit": "d9036b14eebda8ede88e78a6ac278fae05d9778a",
     "pull_request": "https://github.com/maxkantor/GoHyrox/pull/1",
     "merged": false,
+    "mergeable": true,
     "deployment_status": "not_deployed",
     "production_url": "https://www.hybridraceworkouts.com/guides/hyrox-training-plan",
-    "production_health_before_deployment": {
+    "production_health": {
       "homepage_http": 200,
-      "changed_route_http": 200
+      "changed_route_http": 200,
+      "bundle": "main.f1ec1f2f.js",
+      "cta_present": false
     },
     "baseline": "unavailable; GA4 read-only data is not connected",
     "primary_metric": "guide_generate_click / guide_view",
     "target": ">= 5% after 200 guide sessions",
     "guardrail": "Guide engagement time must not fall by more than 10%",
-    "next_evaluation_date": "2026-08-23",
+    "next_evaluation_date": "2026-08-24",
     "rollback": "Revert GoHyrox PR #1",
-    "blocker": "No repository status checks or PR workflow runs; full authenticated checkout unavailable, so full-repository test/lint/build release gate is unverified.",
-    "validation": [
-      "focused component test passed",
-      "ESLint passed in dependency-matched harness",
-      "optimized component production build passed"
-    ]
-  },
-  "queued_experiments": [
-    {
-      "product": "HybridRace Workouts",
-      "id": "hybrid-paywall-offer",
-      "status": "queued_boundary_review"
-    },
-    {
-      "product": "AIWorkoutNow",
-      "id": "workout-result-upgrade",
-      "status": "queued"
-    },
-    {
-      "product": "LuckyNumbersLab",
-      "id": "lottery-upgrade-value",
-      "status": "queued_boundary_review"
-    }
-  ]
+    "blocker": "Zero GitHub status checks and zero PR workflow runs; full-repository test/lint/build gate remains unverified.",
+    "action": "Resumed unfinished experiment; did not start or duplicate another experiment."
+  }
 }
