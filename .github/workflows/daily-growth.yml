@@ -32,14 +32,19 @@ jobs:
         continue-on-error: true
         run: python src/growth_operator.py
 
+      - name: Build YouTube engagement drafts
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python src/youtube_operator.py
+
       - name: Commit latest report
         run: |
-          if git diff --quiet -- reports/latest.md reports/today.json; then
+          if git diff --quiet -- reports/latest.md reports/today.json reports/youtube-latest.md reports/youtube-state.json reports/youtube-comment-drafts.json; then
             exit 0
           fi
           git config user.name "growth-operator[bot]"
           git config user.email "growth-operator[bot]@users.noreply.github.com"
-          git add reports/latest.md reports/today.json
+          git add reports/latest.md reports/today.json reports/youtube-latest.md reports/youtube-state.json reports/youtube-comment-drafts.json
           git commit -m "Update daily growth report"
           git push
 
