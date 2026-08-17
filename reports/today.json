@@ -1,44 +1,44 @@
 {
-  "date": "2026-08-16",
+  "date": "2026-08-17",
   "experiments": [
     {
       "product": "HybridRace Workouts",
-      "id": "hybrid-gym-partners",
-      "funnel_stage": "Partner distribution",
-      "hypothesis": "Hybrid gyms will share a co-branded free workout generator with members before races.",
-      "action": "Create one co-brandable /gym-partner landing-page template with a gym-name parameter, 3 free workouts, and a 20% tracked referral code. Build a qualified list of 25 independent hybrid/CrossFit gyms with public business contact pages; do not send bulk unsolicited messages.",
-      "metric": "partner landing activations and purchases",
-      "target": "5 partner conversations, 2 active partners, 1 verified purchase",
-      "guardrail": "No scraped personal emails or automated bulk outreach",
-      "duration": "21 days",
-      "cost": "$0 before validation",
-      "stop_rule": "Pause if 25 qualified contacts produce no replies or activations"
+      "id": "hybrid-guide-cta",
+      "funnel_stage": "SEO visitor to activation",
+      "hypothesis": "Athletes reading training guides will try the generator when the CTA promises an immediate race-specific workout.",
+      "action": "Add a reusable CTA after the first useful section of every training guide: \u2018Training for a hybrid race? Generate 3 race-paced workouts free \u2014 no credit card.\u2019 Link to /generate with utm_source=training_guides&utm_campaign=guide_activation.",
+      "metric": "guide_generate_click / guide_view",
+      "target": ">= 5% after 200 guide sessions",
+      "guardrail": "Guide engagement time must not fall by more than 10%",
+      "duration": "14 days",
+      "cost": "$0",
+      "stop_rule": "Stop or rewrite if CTR is below 2% after 200 sessions"
     },
     {
       "product": "AIWorkoutNow",
-      "id": "workout-seo-activation",
-      "funnel_stage": "SEO landing page to activation",
-      "hypothesis": "Intent-matched examples and preselected generator settings will convert SEO visitors better than a generic CTA.",
-      "action": "On the five highest-intent landing pages, add a sample workout plus \u2018Customize this workout\u2019 that opens the generator with goal, equipment, and duration preselected. Start with home, dumbbell, strength, weight-loss, and beginner pages.",
-      "metric": "seo_customize_click / seo_landing_view and workout_generated_success",
-      "target": "CTA CTR >= 5% and completion >= 60%",
-      "guardrail": "No indexability, canonical, or page-speed regression",
-      "duration": "21 days",
+      "id": "workout-hero-activation",
+      "funnel_stage": "Landing page to first workout",
+      "hypothesis": "Visitors will start more workouts when the hero promises speed and removes signup anxiety.",
+      "action": "Test hero copy: \u2018Your workout for today\u2014in 30 seconds.\u2019 Supporting line: \u2018Choose your goal, equipment, and time. Get 3 personalized workouts free. No signup or credit card.\u2019 Primary CTA: \u2018Generate My Free Workout.\u2019 Scroll directly to the generator and tag source=hero.",
+      "metric": "hero_generate_click / landing_view and workout_generated_success / hero_generate_click",
+      "target": "Hero CTR >= 8%; completion >= 60% after 300 landing views",
+      "guardrail": "Bounce rate must not increase by more than 10%",
+      "duration": "14 days",
       "cost": "$0",
-      "stop_rule": "Stop expanding if the first five pages produce fewer than 20 activations"
+      "stop_rule": "Revert if hero CTR is below baseline after 300 views"
     },
     {
       "product": "LuckyNumbersLab",
-      "id": "lottery-return-loop",
-      "funnel_stage": "Retention",
-      "hypothesis": "A draw-specific saved-history reminder will increase return visits and eventually paid credit use.",
-      "action": "Offer an opt-in weekly draw-insights email after a user saves numbers. Include saved-history access, new draw statistics, responsible-gaming language, and one product CTA. Require explicit consent and one-click unsubscribe.",
-      "metric": "opt_in_rate, email_return_visit, and purchase_completed",
-      "target": "Opt-in >= 8%; email return rate >= 10%; at least 1 verified purchase",
-      "guardrail": "Complaint rate < 0.1%; unsubscribe honored immediately",
-      "duration": "30 days",
-      "cost": "Existing SES cost only",
-      "stop_rule": "Pause if complaints exceed 0.1% or no return visits occur after 200 deliveries"
+      "id": "lottery-stats-to-generator",
+      "funnel_stage": "Organic traffic to product use",
+      "hypothesis": "Visitors on statistics pages will use the product when the CTA continues their current analysis rather than promising prediction accuracy.",
+      "action": "Add a contextual CTA to Powerball, Mega Millions, hot-number, overdue-number, and best-picks pages: \u2018Use this draw history in the generator.\u2019 Preselect the current lottery and link with utm_campaign=stats_to_generator.",
+      "metric": "stats_generate_click / stats_page_view and numbers_generated",
+      "target": "CTR >= 4% after 500 organic sessions",
+      "guardrail": "Keep entertainment-only and no-guarantee language visible",
+      "duration": "14 days",
+      "cost": "$0",
+      "stop_rule": "Rewrite if CTR is below 1.5% after 500 sessions"
     }
   ]
 }
