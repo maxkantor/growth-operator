@@ -1,6 +1,6 @@
 # Daily Growth Report
 
-Generated: 2026-08-28 21:42 UTC
+Generated: 2026-08-29 16:09 UTC
 
 > Public-site evidence only. Revenue, signup, activation, and checkout conclusions require connected analytics.
 
@@ -26,41 +26,41 @@ Generated: 2026-08-28 21:42 UTC
 
 ## Today's measurable experiments
 
-### HybridRace Workouts — hybrid-gym-partners
+### HybridRace Workouts — hybrid-guide-cta
 
-- **Funnel:** Partner distribution
-- **Hypothesis:** Hybrid gyms will share a co-branded free workout generator with members before races.
-- **Action:** Create one co-brandable /gym-partner landing-page template with a gym-name parameter, 3 free workouts, and a 20% tracked referral code. Build a qualified list of 25 independent hybrid/CrossFit gyms with public business contact pages; do not send bulk unsolicited messages.
-- **Primary metric:** partner landing activations and purchases
-- **Success target:** 5 partner conversations, 2 active partners, 1 verified purchase
-- **Guardrail:** No scraped personal emails or automated bulk outreach
-- **Duration:** 21 days
-- **Cash cost:** $0 before validation
-- **Stop rule:** Pause if 25 qualified contacts produce no replies or activations
-
-### AIWorkoutNow — workout-seo-activation
-
-- **Funnel:** SEO landing page to activation
-- **Hypothesis:** Intent-matched examples and preselected generator settings will convert SEO visitors better than a generic CTA.
-- **Action:** On the five highest-intent landing pages, add a sample workout plus ‘Customize this workout’ that opens the generator with goal, equipment, and duration preselected. Start with home, dumbbell, strength, weight-loss, and beginner pages.
-- **Primary metric:** seo_customize_click / seo_landing_view and workout_generated_success
-- **Success target:** CTA CTR >= 5% and completion >= 60%
-- **Guardrail:** No indexability, canonical, or page-speed regression
-- **Duration:** 21 days
+- **Funnel:** SEO visitor to activation
+- **Hypothesis:** Athletes reading training guides will try the generator when the CTA promises an immediate race-specific workout.
+- **Action:** Add a reusable CTA after the first useful section of every training guide: ‘Training for a hybrid race? Generate 3 race-paced workouts free — no credit card.’ Link to /generate with utm_source=training_guides&utm_campaign=guide_activation.
+- **Primary metric:** guide_generate_click / guide_view
+- **Success target:** >= 5% after 200 guide sessions
+- **Guardrail:** Guide engagement time must not fall by more than 10%
+- **Duration:** 14 days
 - **Cash cost:** $0
-- **Stop rule:** Stop expanding if the first five pages produce fewer than 20 activations
+- **Stop rule:** Stop or rewrite if CTR is below 2% after 200 sessions
 
-### LuckyNumbersLab — lottery-return-loop
+### AIWorkoutNow — workout-hero-activation
 
-- **Funnel:** Retention
-- **Hypothesis:** A draw-specific saved-history reminder will increase return visits and eventually paid credit use.
-- **Action:** Offer an opt-in weekly draw-insights email after a user saves numbers. Include saved-history access, new draw statistics, responsible-gaming language, and one product CTA. Require explicit consent and one-click unsubscribe.
-- **Primary metric:** opt_in_rate, email_return_visit, and purchase_completed
-- **Success target:** Opt-in >= 8%; email return rate >= 10%; at least 1 verified purchase
-- **Guardrail:** Complaint rate < 0.1%; unsubscribe honored immediately
-- **Duration:** 30 days
-- **Cash cost:** Existing SES cost only
-- **Stop rule:** Pause if complaints exceed 0.1% or no return visits occur after 200 deliveries
+- **Funnel:** Landing page to first workout
+- **Hypothesis:** Visitors will start more workouts when the hero promises speed and removes signup anxiety.
+- **Action:** Test hero copy: ‘Your workout for today—in 30 seconds.’ Supporting line: ‘Choose your goal, equipment, and time. Get 3 personalized workouts free. No signup or credit card.’ Primary CTA: ‘Generate My Free Workout.’ Scroll directly to the generator and tag source=hero.
+- **Primary metric:** hero_generate_click / landing_view and workout_generated_success / hero_generate_click
+- **Success target:** Hero CTR >= 8%; completion >= 60% after 300 landing views
+- **Guardrail:** Bounce rate must not increase by more than 10%
+- **Duration:** 14 days
+- **Cash cost:** $0
+- **Stop rule:** Revert if hero CTR is below baseline after 300 views
+
+### LuckyNumbersLab — lottery-stats-to-generator
+
+- **Funnel:** Organic traffic to product use
+- **Hypothesis:** Visitors on statistics pages will use the product when the CTA continues their current analysis rather than promising prediction accuracy.
+- **Action:** Add a contextual CTA to Powerball, Mega Millions, hot-number, overdue-number, and best-picks pages: ‘Use this draw history in the generator.’ Preselect the current lottery and link with utm_campaign=stats_to_generator.
+- **Primary metric:** stats_generate_click / stats_page_view and numbers_generated
+- **Success target:** CTR >= 4% after 500 organic sessions
+- **Guardrail:** Keep entertainment-only and no-guarantee language visible
+- **Duration:** 14 days
+- **Cash cost:** $0
+- **Stop rule:** Rewrite if CTR is below 1.5% after 500 sessions
 
 
 ## Failures and missing fundamentals
