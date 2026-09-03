@@ -1,44 +1,44 @@
 {
-  "date": "2026-09-02",
+  "date": "2026-09-03",
   "experiments": [
     {
       "product": "HybridRace Workouts",
-      "id": "hybrid-paywall-offer",
-      "funnel_stage": "Paywall to purchase",
-      "hypothesis": "A concrete recommended plan will reduce choice friction after free workouts are consumed.",
-      "action": "At the workout limit, lead with the Athlete offer: \u2018Keep training: 50 race-paced workouts for $5.99 once.\u2019 Keep Unlimited $9.99 as the secondary comparison and show \u2018No subscription\u2019 beside both CTAs.",
-      "metric": "checkout_start / unlock_wall_view",
-      "target": ">= 8% and verified purchase rate >= 2%",
-      "guardrail": "Refund/contact complaints must not increase",
-      "duration": "14 days or 300 paywall views",
-      "cost": "$0",
-      "stop_rule": "Revert if checkout-start rate is below the existing baseline after 300 views"
+      "id": "hybrid-gym-partners",
+      "funnel_stage": "Partner distribution",
+      "hypothesis": "Hybrid gyms will share a co-branded free workout generator with members before races.",
+      "action": "Create one co-brandable /gym-partner landing-page template with a gym-name parameter, 3 free workouts, and a 20% tracked referral code. Build a qualified list of 25 independent hybrid/CrossFit gyms with public business contact pages; do not send bulk unsolicited messages.",
+      "metric": "partner landing activations and purchases",
+      "target": "5 partner conversations, 2 active partners, 1 verified purchase",
+      "guardrail": "No scraped personal emails or automated bulk outreach",
+      "duration": "21 days",
+      "cost": "$0 before validation",
+      "stop_rule": "Pause if 25 qualified contacts produce no replies or activations"
     },
     {
       "product": "AIWorkoutNow",
-      "id": "workout-result-upgrade",
-      "funnel_stage": "Activation to pricing",
-      "hypothesis": "Users who receive a useful first workout are more receptive to a paid plan than cold homepage visitors.",
-      "action": "Below the first generated workout, add: \u2018Want your next week planned too?\u2019 Show one recommended paid option, its exact one-time price, and a \u2018See Plans\u2019 CTA. Track generated_result_upgrade_click with workout type and source.",
-      "metric": "generated_result_upgrade_click / workout_generated_success",
-      "target": ">= 6% after 200 successful workouts",
-      "guardrail": "Workout save/print usage must not decrease",
-      "duration": "14 days",
+      "id": "workout-seo-activation",
+      "funnel_stage": "SEO landing page to activation",
+      "hypothesis": "Intent-matched examples and preselected generator settings will convert SEO visitors better than a generic CTA.",
+      "action": "On the five highest-intent landing pages, add a sample workout plus \u2018Customize this workout\u2019 that opens the generator with goal, equipment, and duration preselected. Start with home, dumbbell, strength, weight-loss, and beginner pages.",
+      "metric": "seo_customize_click / seo_landing_view and workout_generated_success",
+      "target": "CTA CTR >= 5% and completion >= 60%",
+      "guardrail": "No indexability, canonical, or page-speed regression",
+      "duration": "21 days",
       "cost": "$0",
-      "stop_rule": "Remove if CTR is below 2% after 200 generated workouts"
+      "stop_rule": "Stop expanding if the first five pages produce fewer than 20 activations"
     },
     {
       "product": "LuckyNumbersLab",
-      "id": "lottery-upgrade-value",
-      "funnel_stage": "Free use to checkout",
-      "hypothesis": "Users will pay when credits are framed around saved analysis and convenience, not better odds.",
-      "action": "At the free-credit limit, test: \u2018Continue your analysis and save your number history.\u2019 Show Starter $3.99 and Popular $9.99, clearly labeled one-time. Do not imply that payment improves winning probability.",
-      "metric": "checkout_started / credit_limit_view and checkout_completed / checkout_started",
-      "target": "Checkout start >= 7%; completion >= 35%",
-      "guardrail": "No increase in gambling-responsibility complaints or misleading-claim feedback",
-      "duration": "14 days or 300 limit views",
-      "cost": "$0",
-      "stop_rule": "Revert if verified purchase conversion declines after 300 views"
+      "id": "lottery-return-loop",
+      "funnel_stage": "Retention",
+      "hypothesis": "A draw-specific saved-history reminder will increase return visits and eventually paid credit use.",
+      "action": "Offer an opt-in weekly draw-insights email after a user saves numbers. Include saved-history access, new draw statistics, responsible-gaming language, and one product CTA. Require explicit consent and one-click unsubscribe.",
+      "metric": "opt_in_rate, email_return_visit, and purchase_completed",
+      "target": "Opt-in >= 8%; email return rate >= 10%; at least 1 verified purchase",
+      "guardrail": "Complaint rate < 0.1%; unsubscribe honored immediately",
+      "duration": "30 days",
+      "cost": "Existing SES cost only",
+      "stop_rule": "Pause if complaints exceed 0.1% or no return visits occur after 200 deliveries"
     }
   ]
 }
